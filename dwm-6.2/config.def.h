@@ -25,6 +25,7 @@ static const char *const autostart[] = {
 	"picom", NULL,
 	"feh", "--bg-fill", "/home/naom/Pictures/backgrounds/cropped-1920-1080-1050844.jpg", NULL,
 	"light-locker", NULL,
+	"xrandr", "--output DP-0", "--mode 1920x1080", "--rate 144", NULL,
 	NULL /* terminate */
 };
 
