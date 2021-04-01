@@ -1,1 +1,1 @@
-should be located in /home/<username>/.config
+should be located in `/home/<username>/.config`
