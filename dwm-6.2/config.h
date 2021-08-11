@@ -6,8 +6,8 @@ static const unsigned int gappx     = 8;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10" };
-static const char dmenufont[]       = "monospace:size=10";
+static const char *fonts[]          = { "roboto-mono:size=10" };
+static const char dmenufont[]       = "roboto-mono:size=10";
 #include "/home/naom/.cache/wal/colors-wal-dwm.h"
 
 
@@ -16,9 +16,7 @@ static const char dmenufont[]       = "monospace:size=10";
 static const char *const autostart[] = {
 	"slstatus", NULL,
 	"picom", NULL,
-	"feh", "--bg-fill", "/home/naom/Pictures/backgrounds/cropped-1920-1080-1050844.jpg", NULL,
-	"light-locker", NULL,
-	"xrandr", "--output DP-0", "--mode 1920x1080", "--rate 144", NULL,
+	"feh", "--bg-fill", "/home/naom/Pictures/backgrounds/80049715_p0.png", NULL,
 	NULL /* terminate */
 };
 
@@ -61,13 +59,21 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, NULL };
-static const char *termcmd[]  = { "xfce4-terminal", NULL };
-static const char *screencmd[] = { "xfce4-screenshooter", "-r", NULL };
+static const char *termcmd[]  = { "alacritty", NULL };
+static const char *screencmd[] = { "/home/naom/scripts/screenshot.sh", NULL};
+static const char *brightnessLowercmd[] = {"xbacklight" , "-dec", "2", NULL};
+static const char *brightnessHighercmd[] = {"xbacklight", "-inc", "2", NULL};
+static const char *volUp[] = {"pactl", "--", "set-sink-volume", "0", "+1%", NULL};
+static const char *volDown[] = {"pactl", "--", "set-sink-volume", "0", "-1%", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ 0,				XF86XK_MonBrightnessDown,   spawn,	   {.v = brightnessLowercmd } },
+	{ 0,    	 	        XF86XK_MonBrightnessUp,  spawn,          {.v = brightnessHighercmd } },
+	{ 0,				XF86XK_AudioLowerVolume, spawn,		{.v = volDown } },
+	{ 0,				XF86XK_AudioRaiseVolume, spawn, 	{.v = volUp } },
 	{ MODKEY|ShiftMask,		XK_s,	   spawn,	   {.v = screencmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
