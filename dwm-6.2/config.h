@@ -65,6 +65,7 @@ static const char *brightnessLowercmd[] = {"xbacklight" , "-dec", "2", NULL};
 static const char *brightnessHighercmd[] = {"xbacklight", "-inc", "2", NULL};
 static const char *volUp[] = {"pactl", "--", "set-sink-volume", "0", "+1%", NULL};
 static const char *volDown[] = {"pactl", "--", "set-sink-volume", "0", "-1%", NULL};
+static const char *launchIntelliJ[] = {"/home/naom/idea.sh", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -75,6 +76,7 @@ static Key keys[] = {
 	{ 0,				XF86XK_AudioLowerVolume, spawn,		{.v = volDown } },
 	{ 0,				XF86XK_AudioRaiseVolume, spawn, 	{.v = volUp } },
 	{ MODKEY|ShiftMask,		XK_s,	   spawn,	   {.v = screencmd } },
+	{ MODKEY|ControlMask,		XK_n,	   spawn,          {.v = launchIntelliJ } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
