@@ -17,7 +17,7 @@ static const char *const autostart[] = {
 	"slstatus", NULL,
 	"picom", NULL,
 	"feh", "--bg-fill", "/home/naom/Pictures/backgrounds/80049715_p0.png", NULL,
-	"systemctl", "restart", "iwd", NULL
+	"systemctl", "restart", "iwd", NULL,
 	NULL /* terminate */
 };
 
